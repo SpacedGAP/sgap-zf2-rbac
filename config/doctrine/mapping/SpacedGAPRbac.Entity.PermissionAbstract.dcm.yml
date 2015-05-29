@@ -1,0 +1,22 @@
+##
+# SpacedGAPRbac\Entity\PermissionAbstract
+##
+SpacedGAPRbac\Entity\PermissionAbstract:
+    type: mappedSuperclass
+    repositoryClass: SpacedGAPRbac\Repository\PermissionRepository
+    schema: public
+    table: public.permissions
+
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: AUTO
+    fields:        
+        name:
+            type: string
+            nullable: false
+            length: 255

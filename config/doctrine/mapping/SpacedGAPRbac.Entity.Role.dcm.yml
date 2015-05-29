@@ -1,0 +1,67 @@
+##
+# SpacedGAPRbac\Entity\Role
+##
+SpacedGAPRbac\Entity\Role:
+    type: entity
+    repositoryClass: SpacedGAPRbac\Repository\RoleRepository
+    extends: SpacedGAPRbac\Entity\RoleAbstract
+    schema: public
+    table: public.roles
+    gedmo:
+        tree:
+            type: nested
+
+    fields:               
+        lft:
+            type: integer
+            gedmo:
+                - treeLeft
+        rgt:
+            type: integer
+            gedmo:
+                - treeRight
+        root:
+            type: integer
+            nullable: true
+            gedmo:
+                - treeRoot
+        lvl:
+            type: integer
+            gedmo:
+                - treeLevel
+              
+    manyToOne:
+        parent:
+            targetEntity: SpacedGAPRbac\Entity\Role
+            inversedBy: children
+            joinColumn:
+                name: parent_id
+                referenceColumnName: id
+                onDelete: CASCADE
+            gedmo:
+                - treeParent
+
+    oneToMany:
+        children:
+            targetEntity: SpacedGAPRbac\Entity\Role
+            mappedBy: parent
+            orderBy:
+                lft: ASC
+                    
+    manyToMany:
+        permissions:
+            targetEntity: SpacedGAPRbac\Entity\Permission
+            fetch: LAZY
+            inversedBy: permission_roles
+            joinTable:
+                name: public.roles_permissions
+                joinColumns:
+                    role_id:
+                        referenceColumnName: id
+                inverseJoinColumns:
+                    permission_id:
+                        referenceColumnName: id
+                            
+        role_users:
+            targetEntity: SpacedGAPRbac\Entity\User
+            mappedBy: roles

@@ -1,0 +1,14 @@
+##
+# SpacedGAPRbac\Entity\Permission
+##
+SpacedGAPRbac\Entity\Permission:
+    type: entity
+    repositoryClass: SpacedGAPRbac\Repository\PermissionRepository
+    extends: SpacedGAPRbac\Entity\PermissionAbstract
+    schema: public
+    table: public.permissions
+
+    manyToMany:
+        permission_roles:
+            targetEntity: SpacedGAPRbac\Entity\Role
+            mappedBy: permissions

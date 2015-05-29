@@ -1,0 +1,33 @@
+##
+# SpacedGAPRbac\Entity\User
+##
+SpacedGAPRbac\Entity\User:
+    type: entity
+    repositoryClass: SpacedGAPRbac\Repository\UserRepository      
+    extends: SpacedGAPRbac\Entity\UserAbstract
+    schema: public
+    table: public.users
+
+    fields:
+        last_name:
+            type: string
+            nullable: true
+            length: 255
+
+        first_name: 
+            type: string
+            nullable: true
+            length: 255 
+                
+    manyToMany:
+        roles:
+            targetEntity: SpacedGAPRbac\Entity\Role
+            inversedBy: role_users
+            joinTable:
+                name: public.users_roles
+                joinColumns:
+                    user_id:
+                        referenceColumnName: id
+                inverseJoinColumns:
+                    role_id:
+                        referenceColumnName: id

@@ -6,13 +6,21 @@
             "name": "Giovanni Petrache",
             "email": "giovanni.petrache@gmail.com"
         }
-    ],   
+    ],
+    "autoload": {
+        "psr-4": {
+            "SpacedGAPRbac\\": "src/"
+        }
+    },
     "require": {
         "php": "^5.6",
         "zendframework/zendframework": "^2.4",
+        "spacedgap/sgap-php-custom-library": "dev-dev",
         "zf-commons/zfc-user-doctrine-orm": "^1.0",
         "zf-commons/zfc-rbac": "^2.5",
-        "symfony/yaml": "^2.6"
+        "symfony/yaml": "^2.6",      
+        "gedmo/doctrine-extensions": "^2.4",       
+        "doctrine/migrations": "@dev"
     },
     "require-dev": {
         "zendframework/zftool": "^0.1.0"

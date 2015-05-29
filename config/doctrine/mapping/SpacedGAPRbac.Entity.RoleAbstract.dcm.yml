@@ -1,0 +1,23 @@
+##
+# SpacedGAPRbac\Entity\RoleAbstract
+##
+SpacedGAPRbac\Entity\RoleAbstract:
+    type: mappedSuperclass
+    repositoryClass: SpacedGAPRbac\Repository\RoleRepository
+    schema: public
+    table: public.roles
+                
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: AUTO
+    fields:        
+        name:
+            type: string
+            nullable: false
+            length: 255
+
