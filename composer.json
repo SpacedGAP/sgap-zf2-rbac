@@ -1,6 +1,12 @@
 {
     "name": "spacedgap/rbac",
     "description": "Custom ZfcRbac implementing custom ZfcUserDoctrineOrm",
+    "authors": [
+        {
+            "name": "Giovanni Petrache",
+            "email": "giovanni.petrache@gmail.com"
+        }
+    ],   
     "require": {
         "php": "^5.6",
         "zendframework/zendframework": "^2.4",
@@ -10,11 +16,5 @@
     },
     "require-dev": {
         "zendframework/zftool": "^0.1.0"
-    },
-    "authors": [
-        {
-            "name": "Giovanni Petrache",
-            "email": "giovanni.petrache@gmail.com"
-        }
-    ]
+    }
 }
