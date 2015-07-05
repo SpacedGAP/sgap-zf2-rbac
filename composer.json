@@ -21,7 +21,8 @@
         "symfony/yaml": "^2.6",      
         "gedmo/doctrine-extensions": "^2.4",       
         "doctrine/migrations": "@dev",
-        "doctrine/data-fixtures": "^1.1"
+        "doctrine/data-fixtures": "^1.1",
+        "codeception/codeception": "*"
     },
     "require-dev": {
         "zendframework/zftool": "^0.1.0"

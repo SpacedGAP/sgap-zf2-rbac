@@ -1,0 +1,32 @@
+{% set form = loginForm %}
+
+{% do form.prepare() %}
+{% do form.setAttribute('action', url('zfcuser/login')) %}
+{% do form.setAttribute('method', 'post') %}
+
+{{ form().openTag(form) | raw }}
+    <fieldset>
+        {{ formElementErrors(form.get('identity')) }}
+        {{ formRow(form.get('identity')) }}
+        {{ formRow(form.get('credential')) }}
+        {% if (redirect | length > 0) %}
+            <input type="hidden" name="redirect" value="{{ escapeHtml(redirect) }}" />
+        {% endif %}
+
+    {% if enableRegistration %}
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+                {{ translate('Not registered?') }} <a href="{{ url('zfcuser/register') ~ ((redirect | length > 0) ? '?redirect=' ~ escapeUrl(redirect)) }}">{{ translate('Sign up!') }}</a>
+            </div>
+        </div>
+    {% endif %}
+    </fieldset>
+
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-12">
+                {{ formButton(form.get('submit')) }}
+            </div>
+        </div>
+    </div>
+{{ form().closeTag() | raw }}
